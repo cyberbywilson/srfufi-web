@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rubén Orbea | @srfufi</title>
+  <meta name="description" content="Creador de contenido fitness, emprendedor y fundador de Face Existence & FAXIS. Más de 600K seguidores en todas las plataformas.">
+  <style>
+    :root {
+      --red: #C64E48;
+      --red-dark: #a33f3a;
+      --red-glow: rgba(198, 78, 72, 0.25);
+      --black: #080808;
+      --dark: #111111;
+      --card: #161616;
+      --card2: #1e1e1e;
+      --border: #272727;
+      --text: #f0f0f0;
+      --muted: #777777;
+      --font: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body { font-family: var(--font); background: var(--black); color: var(--text); line-height: 1.6; overflow-x: hidden; }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--black); }
+    ::-webkit-scrollbar-thumb { background: var(--red); border-radius: 3px; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 2rem;
+      background: rgba(8,8,8,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { font-size: 1.1rem; font-weight: 700; letter-spacing: 0.05em; }
+    .nav-logo span { color: var(--red); }
+    .nav-links { display: flex; gap: 2rem; font-size: 0.85rem; color: var(--muted); }
+    .nav-links a:hover { color: var(--text); transition: color 0.2s; }
+    .nav-cta {
+      background: var(--red); color: #fff;
+      padding: 0.5rem 1.25rem; border-radius: 50px;
+      font-size: 0.85rem; font-weight: 600;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .nav-cta:hover { background: var(--red-dark); transform: translateY(-1px); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      padding: 7rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 70% 50%, rgba(198,78,72,0.12) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 60% at 10% 80%, rgba(198,78,72,0.07) 0%, transparent 60%);
+    }
+    .hero-grid-bg {
+      position: absolute; inset: 0; opacity: 0.03;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+    .hero-inner {
+      position: relative; z-index: 1;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 5rem; align-items: center;
+      max-width: 1100px; width: 100%;
+    }
+
+    /* Instagram card */
+    .ig-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2rem;
+      position: relative;
+      box-shadow: 0 0 60px rgba(198,78,72,0.08), 0 20px 60px rgba(0,0,0,0.5);
+      animation: floatCard 6s ease-in-out infinite;
+    }
+    @keyframes floatCard {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    .ig-card::before {
+      content: '';
+      position: absolute; top: -1px; left: 20px; right: 20px; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--red), transparent);
+    }
+
+    .ig-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
+    .ig-avatar-wrap { position: relative; flex-shrink: 0; }
+    .ig-avatar-ring {
+      width: 72px; height: 72px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--red), #e07070, var(--red-dark));
+      padding: 2px;
+    }
+    .ig-avatar {
+      width: 100%; height: 100%; border-radius: 50%;
+      border: 2px solid var(--card);
+      object-fit: cover;
+      background: var(--card2);
+    }
+    .ig-verified {
+      position: absolute; bottom: 0; right: 0;
+      width: 20px; height: 20px; border-radius: 50%;
+      background: #1d9bf0; border: 2px solid var(--card);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 10px;
+    }
+    .ig-info h3 { font-size: 1rem; font-weight: 700; }
+    .ig-info p { font-size: 0.8rem; color: var(--muted); }
+    .ig-handle { font-size: 0.8rem; color: var(--red); }
+
+    .ig-stats {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      text-align: center; gap: 1px;
+      background: var(--border);
+      border-radius: 12px; overflow: hidden;
+      margin-bottom: 1.5rem;
+    }
+    .ig-stat {
+      background: var(--card2);
+      padding: 0.85rem 0.5rem;
+    }
+    .ig-stat-num { font-size: 1.1rem; font-weight: 800; color: var(--text); }
+    .ig-stat-label { font-size: 0.7rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+
+    .ig-bio { font-size: 0.82rem; color: #bbb; line-height: 1.5; margin-bottom: 1.25rem; }
+    .ig-bio strong { color: var(--text); }
+
+    .ig-badge {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      background: rgba(198,78,72,0.15); border: 1px solid rgba(198,78,72,0.3);
+      color: var(--red); font-size: 0.72rem; font-weight: 600;
+      padding: 0.3rem 0.75rem; border-radius: 50px; margin-bottom: 1.25rem;
+    }
+
+    .ig-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px;
+      border-radius: 10px; overflow: hidden;
+    }
+    .ig-grid-item {
+      aspect-ratio: 1;
+      background: var(--card2);
+      position: relative; overflow: hidden;
+    }
+    .ig-grid-item img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.3s;
+    }
+    .ig-grid-item:hover img { transform: scale(1.05); }
+    .ig-grid-placeholder {
+      width: 100%; height: 100%;
+      background: linear-gradient(135deg, var(--card2), var(--border));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; color: var(--muted);
+    }
+
+    .ig-follow-btn {
+      display: block; width: 100%; margin-top: 1rem;
+      background: linear-gradient(135deg, var(--red), var(--red-dark));
+      color: #fff; text-align: center;
+      padding: 0.65rem; border-radius: 10px;
+      font-size: 0.85rem; font-weight: 700;
+      transition: opacity 0.2s, transform 0.15s;
+    }
+    .ig-follow-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+
+    /* Hero text */
+    .hero-text { }
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(198,78,72,0.1); border: 1px solid rgba(198,78,72,0.2);
+      color: var(--red); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.4rem 1rem; border-radius: 50px;
+      margin-bottom: 1.5rem;
+    }
+    .hero-tag::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--red); animation: pulse 2s infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.8); } }
+
+    .hero-title {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 900; line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+    }
+    .hero-title span { color: var(--red); }
+
+    .hero-desc {
+      font-size: 1.05rem; color: #999;
+      max-width: 440px; margin-bottom: 2.5rem;
+      line-height: 1.7;
+    }
+
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--red), var(--red-dark));
+      color: #fff; padding: 0.85rem 2rem;
+      border-radius: 50px; font-size: 0.9rem; font-weight: 700;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 20px rgba(198,78,72,0.35);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(198,78,72,0.45); }
+    .btn-secondary {
+      border: 1px solid var(--border); color: var(--text);
+      padding: 0.85rem 2rem; border-radius: 50px;
+      font-size: 0.9rem; font-weight: 600;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .btn-secondary:hover { border-color: var(--muted); background: rgba(255,255,255,0.04); }
+
+    .hero-social-proof {
+      margin-top: 3rem; display: flex; align-items: center; gap: 1rem;
+    }
+    .hero-avatars { display: flex; }
+    .hero-avatars span {
+      width: 32px; height: 32px; border-radius: 50%;
+      background: var(--card2); border: 2px solid var(--black);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.65rem; color: var(--muted);
+      margin-left: -8px;
+    }
+    .hero-avatars span:first-child { margin-left: 0; }
+    .hero-proof-text { font-size: 0.82rem; color: var(--muted); }
+    .hero-proof-text strong { color: var(--red); }
+
+    /* ── SECTION BASE ── */
+    section { padding: 6rem 2rem; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .section-tag {
+      font-size: 0.75rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.12em; color: var(--red);
+      margin-bottom: 0.75rem;
+    }
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 900; line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+    .section-title span { color: var(--red); }
+    .section-desc { font-size: 1rem; color: var(--muted); max-width: 520px; line-height: 1.7; }
+
+    /* ── STATS BANNER ── */
+    .stats-banner {
+      background: var(--card);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 3rem 2rem;
+    }
+    .stats-grid {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      divide: var(--border);
+    }
+    .stat-item {
+      text-align: center; padding: 1rem 2rem;
+      border-right: 1px solid var(--border);
+      position: relative;
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-num {
+      font-size: 2.5rem; font-weight: 900;
+      color: var(--text); line-height: 1;
+      margin-bottom: 0.35rem;
+    }
+    .stat-num span { color: var(--red); }
+    .stat-label { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+    .stat-platform { font-size: 0.65rem; color: var(--border); margin-top: 0.25rem; }
+
+    /* ── ABOUT ── */
+    .about { background: var(--black); }
+    .about-inner {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 5rem; align-items: center;
+    }
+    .about-img-wrap {
+      position: relative;
+    }
+    .about-img-frame {
+      border-radius: 20px; overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--card);
+      aspect-ratio: 4/5;
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+    }
+    .about-img-frame img { width: 100%; height: 100%; object-fit: cover; }
+    .about-img-frame .about-placeholder {
+      font-size: 5rem; color: var(--border);
+    }
+    .about-badge-float {
+      position: absolute; bottom: -1.5rem; right: -1.5rem;
+      background: var(--red); color: #fff;
+      border-radius: 16px; padding: 1rem 1.25rem;
+      font-size: 0.85rem; font-weight: 700;
+      box-shadow: 0 10px 30px rgba(198,78,72,0.4);
+      text-align: center;
+    }
+    .about-badge-float span { display: block; font-size: 1.5rem; font-weight: 900; }
+
+    .about-text { }
+    .about-list { list-style: none; margin: 1.5rem 0 2rem; display: flex; flex-direction: column; gap: 0.75rem; }
+    .about-list li {
+      display: flex; align-items: flex-start; gap: 0.75rem;
+      font-size: 0.9rem; color: #bbb;
+    }
+    .about-list li::before {
+      content: '';
+      width: 18px; height: 18px; border-radius: 50%;
+      background: rgba(198,78,72,0.15); border: 1px solid rgba(198,78,72,0.3);
+      flex-shrink: 0; margin-top: 2px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2 6l3 3 5-5' stroke='%23C64E48' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-size: 12px; background-repeat: no-repeat; background-position: center;
+    }
+
+    /* ── SERVICES ── */
+    .services { background: var(--dark); }
+    .services-header { text-align: center; margin-bottom: 4rem; }
+    .services-header .section-desc { margin: 0 auto; }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .service-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 2rem;
+      transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+      position: relative; overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--red), transparent);
+      opacity: 0; transition: opacity 0.25s;
+    }
+    .service-card:hover { border-color: rgba(198,78,72,0.3); transform: translateY(-4px); box-shadow: 0 12px 40px rgba(198,78,72,0.1); }
+    .service-card:hover::before { opacity: 1; }
+    .service-icon {
+      width: 48px; height: 48px; border-radius: 12px;
+      background: rgba(198,78,72,0.12); border: 1px solid rgba(198,78,72,0.2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; margin-bottom: 1.25rem;
+    }
+    .service-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.6rem; }
+    .service-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+
+    /* ── BRANDS ── */
+    .brands { background: var(--black); }
+    .brands-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 3rem; }
+    .brand-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2.5rem;
+      transition: border-color 0.25s, transform 0.25s;
+      position: relative; overflow: hidden;
+    }
+    .brand-card:hover { border-color: rgba(198,78,72,0.35); transform: translateY(-4px); }
+    .brand-card-glow {
+      position: absolute; top: -60px; right: -60px;
+      width: 180px; height: 180px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(198,78,72,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .brand-logo-area {
+      display: flex; align-items: center; gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .brand-logo {
+      width: 52px; height: 52px; border-radius: 14px;
+      background: rgba(198,78,72,0.12); border: 1px solid rgba(198,78,72,0.2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem;
+    }
+    .brand-name { font-size: 1.2rem; font-weight: 800; }
+    .brand-type { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+    .brand-desc { font-size: 0.88rem; color: #999; line-height: 1.65; margin-bottom: 1.75rem; }
+    .brand-link {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      color: var(--red); font-size: 0.85rem; font-weight: 600;
+      transition: gap 0.2s;
+    }
+    .brand-link:hover { gap: 0.75rem; }
+
+    /* ── SOCIAL LINKS ── */
+    .socials { background: var(--dark); }
+    .socials-header { text-align: center; margin-bottom: 3rem; }
+    .socials-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1rem; max-width: 900px; margin: 0 auto;
+    }
+    .social-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 16px; padding: 1.5rem;
+      display: flex; align-items: center; gap: 1rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .social-card:hover { border-color: var(--muted); transform: translateY(-2px); }
+    .social-icon {
+      width: 44px; height: 44px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem; flex-shrink: 0;
+    }
+    .social-card .social-info p { font-size: 0.9rem; font-weight: 700; }
+    .social-card .social-info span { font-size: 0.75rem; color: var(--muted); }
+
+    /* ── AMBASSADOR ── */
+    .ambassador {
+      background: linear-gradient(135deg, rgba(198,78,72,0.08) 0%, var(--black) 50%, rgba(198,78,72,0.05) 100%);
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    }
+    .ambassador-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 2rem;
+    }
+    .ambassador-text h2 { font-size: 1.8rem; font-weight: 900; margin-bottom: 0.5rem; }
+    .ambassador-text p { font-size: 0.95rem; color: var(--muted); }
+    .code-badge {
+      background: var(--card); border: 1px solid rgba(198,78,72,0.3);
+      border-radius: 16px; padding: 1.5rem 2.5rem;
+      text-align: center;
+    }
+    .code-badge .code-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 0.5rem; }
+    .code-badge .code-value { font-size: 2.5rem; font-weight: 900; color: var(--red); letter-spacing: 0.15em; }
+    .code-badge .code-brand { font-size: 0.8rem; color: var(--muted); margin-top: 0.25rem; }
+
+    /* ── CONTACT ── */
+    .contact { background: var(--black); }
+    .contact-inner {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 5rem; align-items: center;
+    }
+    .contact-cta h2 { font-size: 2.5rem; font-weight: 900; line-height: 1.1; margin-bottom: 1rem; }
+    .contact-cta h2 span { color: var(--red); }
+    .contact-cta p { font-size: 1rem; color: var(--muted); margin-bottom: 2rem; line-height: 1.7; }
+    .contact-options { display: flex; flex-direction: column; gap: 1rem; }
+    .contact-option {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 14px; padding: 1.25rem 1.5rem;
+      display: flex; align-items: center; gap: 1rem;
+      transition: border-color 0.2s;
+    }
+    .contact-option:hover { border-color: rgba(198,78,72,0.35); }
+    .contact-option-icon {
+      width: 42px; height: 42px; border-radius: 10px;
+      background: rgba(198,78,72,0.12); border: 1px solid rgba(198,78,72,0.2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; flex-shrink: 0;
+    }
+    .contact-option-info p { font-size: 0.9rem; font-weight: 600; }
+    .contact-option-info span { font-size: 0.8rem; color: var(--muted); }
+    .contact-form {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 20px; padding: 2.5rem;
+    }
+    .contact-form h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 1.5rem; }
+    .form-group { margin-bottom: 1.25rem; }
+    .form-group label { display: block; font-size: 0.8rem; color: var(--muted); margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%; background: var(--dark); border: 1px solid var(--border);
+      border-radius: 10px; padding: 0.75rem 1rem;
+      color: var(--text); font-family: var(--font); font-size: 0.9rem;
+      transition: border-color 0.2s;
+      outline: none;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus { border-color: rgba(198,78,72,0.5); }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    .form-group select option { background: var(--dark); }
+    .form-submit {
+      width: 100%;
+      background: linear-gradient(135deg, var(--red), var(--red-dark));
+      color: #fff; border: none; border-radius: 10px;
+      padding: 0.9rem; font-size: 0.95rem; font-weight: 700;
+      cursor: pointer; transition: opacity 0.2s, transform 0.15s;
+    }
+    .form-submit:hover { opacity: 0.9; transform: translateY(-1px); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark); border-top: 1px solid var(--border);
+      padding: 2.5rem 2rem;
+    }
+    .footer-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1rem;
+    }
+    .footer-logo { font-size: 1rem; font-weight: 700; }
+    .footer-logo span { color: var(--red); }
+    .footer-links { display: flex; gap: 1.5rem; font-size: 0.82rem; color: var(--muted); }
+    .footer-links a:hover { color: var(--text); }
+    .footer-copy { font-size: 0.78rem; color: var(--muted); }
+
+    /* ── DIVIDER ── */
+    .divider {
+      height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent);
+      margin: 0;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .ig-card { order: -1; max-width: 400px; margin: 0 auto; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .stat-item:nth-child(2) { border-right: none; }
+      .about-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .about-img-wrap { max-width: 400px; }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .brands-inner { grid-template-columns: 1fr; }
+      .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .socials-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 600px) {
+      nav { padding: 1rem; }
+      .nav-links { display: none; }
+      section { padding: 4rem 1.25rem; }
+      .hero { padding: 6rem 1.25rem 3rem; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .services-grid { grid-template-columns: 1fr; }
+      .socials-grid { grid-template-columns: 1fr 1fr; }
+      .ambassador-inner { flex-direction: column; }
+      .hero-title { font-size: 2.2rem; }
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .hero-text > * { animation: fadeInUp 0.6s ease both; }
+    .hero-text > *:nth-child(1) { animation-delay: 0.1s; }
+    .hero-text > *:nth-child(2) { animation-delay: 0.2s; }
+    .hero-text > *:nth-child(3) { animation-delay: 0.3s; }
+    .hero-text > *:nth-child(4) { animation-delay: 0.4s; }
+    .hero-text > *:nth-child(5) { animation-delay: 0.5s; }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ── -->
+  <nav>
+    <div class="nav-logo">sr<span>fufi</span></div>
+    <div class="nav-links">
+      <a href="#sobre-mi">Sobre mí</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+    <a href="#contacto" class="nav-cta">Colaborar →</a>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid-bg"></div>
+    <div class="hero-inner">
+
+      <!-- Instagram Card -->
+      <div class="ig-card">
+        <div class="ig-header">
+          <div class="ig-avatar-wrap">
+            <div class="ig-avatar-ring">
+              <img
+                class="ig-avatar"
+                src="assets/instagram/profile.jpg"
+                alt="@srfufi"
+                onerror="this.style.display='none'; this.parentElement.style.background='#C64E48'; this.parentElement.innerHTML='<div style=\'width:100%;height:100%;border-radius:50%;background:#1a1a1a;display:flex;align-items:center;justify-content:center;font-size:1.6rem;font-weight:900;color:#C64E48\'>RO</div>'"
+              >
+            </div>
+            <div class="ig-verified">✓</div>
+          </div>
+          <div class="ig-info">
+            <h3>Rubén Orbea</h3>
+            <div class="ig-handle">@srfufi</div>
+            <p>Economista · Emprendedor</p>
+          </div>
+        </div>
+
+        <div class="ig-stats">
+          <div class="ig-stat">
+            <div class="ig-stat-num">385</div>
+            <div class="ig-stat-label">Publicaciones</div>
+          </div>
+          <div class="ig-stat">
+            <div class="ig-stat-num">211K</div>
+            <div class="ig-stat-label">Seguidores</div>
+          </div>
+          <div class="ig-stat">
+            <div class="ig-stat-num">872</div>
+            <div class="ig-stat-label">Siguiendo</div>
+          </div>
+        </div>
+
+        <div class="ig-bio">
+          <strong>Economista</strong> · Fundador de <strong>@faceexistence</strong> & <strong>FAXIS</strong><br>
+          Embajador <strong>@myprotein</strong> · Código <strong style="color:#C64E48">FUFI</strong><br>
+          📍 España · 🔗 srfufi.bio
+        </div>
+
+        <div class="ig-badge">
+          ⚡ Myprotein Ambassador · Código FUFI
+        </div>
+
+        <div class="ig-grid">
+          <div class="ig-grid-item"><img src="assets/instagram/post_1.jpg" alt="@srfufi post"></div>
+          <div class="ig-grid-item"><img src="assets/instagram/post_2.jpg" alt="@srfufi post"></div>
+          <div class="ig-grid-item"><img src="assets/instagram/post_3.jpg" alt="@srfufi post"></div>
+          <div class="ig-grid-item"><img src="assets/instagram/post_4.jpg" alt="@srfufi post"></div>
+          <div class="ig-grid-item"><img src="assets/instagram/post_5.jpg" alt="@srfufi post"></div>
+          <div class="ig-grid-item"><img src="assets/instagram/post_6.jpg" alt="@srfufi post"></div>
+        </div>
+
+        <a href="https://instagram.com/srfufi" target="_blank" class="ig-follow-btn">
+          Ver en Instagram →
+        </a>
+      </div>
+
+      <!-- Hero Text -->
+      <div class="hero-text">
+        <div class="hero-tag">Creador de contenido · Emprendedor</div>
+        <h1 class="hero-title">
+          Rubén<br><span>Orbea</span>
+        </h1>
+        <p class="hero-desc">
+          Economista convertido en referente del fitness en redes. Más de 600K seguidores entre Instagram y TikTok, fundador de dos marcas de ropa y embajador de Myprotein.
+        </p>
+        <div class="hero-btns">
+          <a href="#contacto" class="btn-primary">Hablemos →</a>
+          <a href="#proyectos" class="btn-secondary">Ver proyectos</a>
+        </div>
+        <div class="hero-social-proof">
+          <div class="hero-avatars">
+            <span>IG</span><span>TK</span><span>YT</span><span>TW</span>
+          </div>
+          <p class="hero-proof-text">Activo en <strong>4+ plataformas</strong> con audiencia real</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── STATS BANNER ── -->
+  <div class="stats-banner">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <div class="stat-num">211<span>K</span></div>
+        <div class="stat-label">Seguidores</div>
+        <div class="stat-platform">Instagram</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">400<span>K</span></div>
+        <div class="stat-label">Seguidores</div>
+        <div class="stat-platform">TikTok</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">600<span>K+</span></div>
+        <div class="stat-label">Alcance total</div>
+        <div class="stat-platform">Todas las plataformas</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">2<span></span></div>
+        <div class="stat-label">Marcas fundadas</div>
+        <div class="stat-platform">Face Existence · FAXIS</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── SOBRE MÍ ── -->
+  <section class="about" id="sobre-mi">
+    <div class="container">
+      <div class="about-inner">
+        <div class="about-img-wrap">
+          <div class="about-img-frame">
+            <img
+              src="assets/instagram/profile.jpg"
+              alt="Rubén Orbea @srfufi"
+              onerror="this.outerHTML='<div class=\'about-placeholder\'>📸</div>'"
+            >
+          </div>
+          <div class="about-badge-float">
+            <span>2+</span>
+            años como<br>referente fitness
+          </div>
+        </div>
+
+        <div class="about-text">
+          <div class="section-tag">Sobre mí</div>
+          <h2 class="section-title">El tipo que convirtió el <span>gym</span> en un negocio</h2>
+          <p style="color:#999; font-size:0.95rem; line-height:1.75; margin-bottom:1rem;">
+            Soy Rubén, aunque en internet me conocen como <strong style="color:#fff">@srfufi</strong>. Economista de formación, emprendedor por vocación y obsesionado con el fitness de toda la vida.
+          </p>
+          <p style="color:#999; font-size:0.95rem; line-height:1.75;">
+            Lo que empezó como contenido de entrenamiento en Instagram se convirtió en una comunidad de más de 600K personas y en dos marcas de ropa con las que demuestro que el trabajo duro tiene recompensa.
+          </p>
+          <ul class="about-list">
+            <li>Economista y CEO de Fufi Industries</li>
+            <li>Fundador de Face Existence — ropa de gym premium española</li>
+            <li>Creador de FAXIS — la marca que representa lucha y perseverancia</li>
+            <li>Embajador oficial de Myprotein España (código FUFI)</li>
+            <li>Contenido en Instagram, TikTok, YouTube y Twitch</li>
+          </ul>
+          <a href="https://srfufi.bio" target="_blank" class="btn-primary" style="display:inline-block;">Ver todos mis links →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ── SERVICIOS ── -->
+  <section class="services" id="servicios">
+    <div class="container">
+      <div class="services-header">
+        <div class="section-tag">Servicios</div>
+        <h2 class="section-title">Cómo podemos <span>colaborar</span></h2>
+        <p class="section-desc">Con más de 600K seguidores activos y dos marcas propias, ofrezco colaboraciones reales con impacto real.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">🤝</div>
+          <h3>Colaboraciones de marca</h3>
+          <p>Integración orgánica de tu producto en mi contenido de fitness. Publico solo lo que realmente uso y en lo que creo — tu marca llega con credibilidad.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">📣</div>
+          <h3>Embajadas de marca</h3>
+          <p>Acuerdos de largo plazo como embajador oficial. Presencia recurrente en mis redes, igual que hago con Myprotein, con código y descuento exclusivo.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🎬</div>
+          <h3>Contenido patrocinado</h3>
+          <p>Reels, stories, TikToks y vídeos de YouTube adaptados a tu campaña. Producción cuidada, audiencia comprometida.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🏷️</div>
+          <h3>Aparición en eventos</h3>
+          <p>Presencia en eventos del sector fitness, lanzamientos de producto o ferias. Conecta directamente con mi comunidad en persona.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">💡</div>
+          <h3>Consultoría de marca personal</h3>
+          <p>Te ayudo a construir tu presencia online desde cero. Estrategia de contenido, posicionamiento y crecimiento orgánico en redes.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🛍️</div>
+          <h3>Capsule / Collab de producto</h3>
+          <p>Co-creación de producto o colección limitada bajo mi sello. Desde el diseño hasta el lanzamiento, con mi comunidad como audiencia.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── AMBASSADOR ── -->
+  <section class="ambassador">
+    <div class="container">
+      <div class="ambassador-inner">
+        <div class="ambassador-text">
+          <h2>Embajador oficial de <span style="color:#C64E48">Myprotein</span></h2>
+          <p>Descuento exclusivo en todos los productos. Usa mi código en el checkout y ahorra en tu próximo pedido.</p>
+        </div>
+        <div class="code-badge">
+          <div class="code-label">Código descuento</div>
+          <div class="code-value">FUFI</div>
+          <div class="code-brand">myprotein.com</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PROYECTOS / MARCAS ── -->
+  <section class="brands" id="proyectos">
+    <div class="container">
+      <div class="section-tag">Proyectos</div>
+      <h2 class="section-title">Mis <span>marcas</span></h2>
+      <p class="section-desc">Dos marcas de ropa fitness nacidas desde el contenido. Diseño con propósito, calidad española.</p>
+      <div class="brands-inner">
+        <div class="brand-card">
+          <div class="brand-card-glow"></div>
+          <div class="brand-logo-area">
+            <div class="brand-logo">👕</div>
+            <div>
+              <div class="brand-name">Face Existence</div>
+              <div class="brand-type">Ropa de gym premium</div>
+            </div>
+          </div>
+          <p class="brand-desc">
+            Ropa de entrenamiento premium para los que van en serio. Drops limitados, diseño exclusivo y calidad que se nota. Hecha para quienes entrenan con propósito y no se rinden.
+          </p>
+          <a href="https://faceexistence.es" target="_blank" class="brand-link">
+            faceexistence.es →
+          </a>
+        </div>
+        <div class="brand-card">
+          <div class="brand-card-glow"></div>
+          <div class="brand-logo-area">
+            <div class="brand-logo">🔥</div>
+            <div>
+              <div class="brand-name">FAXIS</div>
+              <div class="brand-type">Moda con carácter</div>
+            </div>
+          </div>
+          <p class="brand-desc">
+            FAXIS no es solo ropa — es una declaración. La marca que representa el trabajo duro, la perseverancia y la actitud de quien va a por lo que quiere. Primer drop lanzado en 2024.
+          </p>
+          <a href="https://faxiswear.com" target="_blank" class="brand-link">
+            faxiswear.com →
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ── SOCIAL LINKS ── -->
+  <section class="socials">
+    <div class="container">
+      <div class="socials-header">
+        <div class="section-tag">Redes</div>
+        <h2 class="section-title">Encuéntrame en <span>todas partes</span></h2>
+      </div>
+      <div class="socials-grid">
+
+        <a href="https://instagram.com/srfufi" target="_blank" class="social-card">
+          <div class="social-icon" style="background: rgba(225,48,108,0.12); border: 1px solid rgba(225,48,108,0.25);">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="ig1" x1="0" y1="24" x2="24" y2="0" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#f09433"/>
+                  <stop offset="33%" stop-color="#e6683c"/>
+                  <stop offset="55%" stop-color="#dc2743"/>
+                  <stop offset="77%" stop-color="#cc2366"/>
+                  <stop offset="100%" stop-color="#bc1888"/>
+                </linearGradient>
+              </defs>
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" fill="url(#ig1)"/>
+            </svg>
+          </div>
+          <div class="social-info">
+            <p>Instagram</p>
+            <span>@srfufi · 211K</span>
+          </div>
+        </a>
+
+        <a href="https://tiktok.com/@srfufi" target="_blank" class="social-card">
+          <div class="social-icon" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.28 8.28 0 004.84 1.54V6.79a4.85 4.85 0 01-1.07-.1z" fill="white"/>
+            </svg>
+          </div>
+          <div class="social-info">
+            <p>TikTok</p>
+            <span>@srfufi · 400K</span>
+          </div>
+        </a>
+
+        <a href="https://youtube.com/@fufisito" target="_blank" class="social-card">
+          <div class="social-icon" style="background: rgba(255,0,0,0.1); border: 1px solid rgba(255,0,0,0.2);">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" fill="#FF0000"/>
+            </svg>
+          </div>
+          <div class="social-info">
+            <p>YouTube</p>
+            <span>Fufisito</span>
+          </div>
+        </a>
+
+        <a href="https://twitch.tv/srfufi" target="_blank" class="social-card">
+          <div class="social-icon" style="background: rgba(145,70,255,0.12); border: 1px solid rgba(145,70,255,0.25);">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714z" fill="#9146FF"/>
+            </svg>
+          </div>
+          <div class="social-info">
+            <p>Twitch</p>
+            <span>srfufi</span>
+          </div>
+        </a>
+
+        <a href="https://twitter.com/srfufi" target="_blank" class="social-card">
+          <div class="social-icon" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.261 5.638 5.904-5.638zm-1.161 17.52h1.833L7.084 4.126H5.117z" fill="white"/>
+            </svg>
+          </div>
+          <div class="social-info">
+            <p>X / Twitter</p>
+            <span>@SrFufi</span>
+          </div>
+        </a>
+
+        <a href="https://srfufi.bio" target="_blank" class="social-card">
+          <div class="social-icon" style="background: rgba(198,78,72,0.12); border: 1px solid rgba(198,78,72,0.25);">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71" stroke="#C64E48" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71" stroke="#C64E48" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="social-info">
+            <p>Todos los links</p>
+            <span>srfufi.bio</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CONTACTO ── -->
+  <section class="contact" id="contacto">
+    <div class="container">
+      <div class="contact-inner">
+        <div class="contact-cta">
+          <div class="section-tag">Contacto</div>
+          <h2>¿Tienes una <span>propuesta</span>?</h2>
+          <p>Si representas una marca o tienes una idea de colaboración, escríbeme. Solo trabajo con marcas que encajan de verdad con lo que hago.</p>
+          <div class="contact-options">
+            <a href="mailto:info.srfufi@gmail.com" class="contact-option">
+              <div class="contact-option-icon">✉️</div>
+              <div class="contact-option-info">
+                <p>Email</p>
+                <span>info.srfufi@gmail.com</span>
+              </div>
+            </a>
+            <a href="https://instagram.com/srfufi" target="_blank" class="contact-option">
+              <div class="contact-option-icon">📸</div>
+              <div class="contact-option-info">
+                <p>Instagram DM</p>
+                <span>@srfufi</span>
+              </div>
+            </a>
+            <a href="https://srfufi.bio" target="_blank" class="contact-option">
+              <div class="contact-option-icon">🔗</div>
+              <div class="contact-option-info">
+                <p>Formulario de asesoría</p>
+                <span>srfufi.bio</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="contact-form">
+          <h3>Cuéntame tu propuesta</h3>
+          <form onsubmit="handleForm(event)">
+            <div class="form-group">
+              <label>Nombre / Marca</label>
+              <input type="text" placeholder="Tu nombre o marca" required>
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" placeholder="tu@email.com" required>
+            </div>
+            <div class="form-group">
+              <label>Tipo de colaboración</label>
+              <select>
+                <option>Colaboración de marca</option>
+                <option>Embajada de marca</option>
+                <option>Contenido patrocinado</option>
+                <option>Evento / Aparición</option>
+                <option>Consultoría</option>
+                <option>Collab de producto</option>
+                <option>Otro</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Mensaje</label>
+              <textarea placeholder="Cuéntame de qué va la propuesta..."></textarea>
+            </div>
+            <button type="submit" class="form-submit">Enviar propuesta →</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">sr<span>fufi</span> — Rubén Orbea</div>
+      <div class="footer-links">
+        <a href="https://instagram.com/srfufi" target="_blank">Instagram</a>
+        <a href="https://tiktok.com/@srfufi" target="_blank">TikTok</a>
+        <a href="https://faceexistence.es" target="_blank">Face Existence</a>
+        <a href="https://faxiswear.com" target="_blank">FAXIS</a>
+      </div>
+      <div class="footer-copy">© 2026 Rubén Orbea · @srfufi</div>
+    </div>
+  </footer>
+
+  <script>
+    function handleForm(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('.form-submit');
+      btn.textContent = '¡Enviado! Te contactaré pronto ✓';
+      btn.style.background = '#2a6b3a';
+      btn.disabled = true;
+    }
+
+    // Smooth reveal on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(el => {
+        if (el.isIntersecting) {
+          el.target.style.opacity = '1';
+          el.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.service-card, .brand-card, .social-card, .stat-item').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+      observer.observe(el);
+    });
+  </script>
+
+</body>
+</html>
